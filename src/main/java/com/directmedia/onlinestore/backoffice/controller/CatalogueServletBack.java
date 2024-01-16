@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "CatalogueServlet", value = "/catalogue")
-public class CatalogueServlet extends HttpServlet {
+public class CatalogueServletBack extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
