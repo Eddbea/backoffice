@@ -38,6 +38,8 @@ public class CatalogueServletBack extends HttpServlet {
             bad.setGenre("Pop");
             leGendarmeDeSaintTropez.setGenre("Comédie");
 
+
+
             Catalogue.listOfWorks.add(minorityReport);
             Catalogue.listOfWorks.add(bad);
             Catalogue.listOfWorks.add(leGendarmeDeSaintTropez);
