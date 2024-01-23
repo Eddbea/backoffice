@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "helloServlet", value = "/home")
-public class HomeServlet extends HttpServlet {
+@WebServlet(name = "homeServletBack", value = "/home")
+public class HomeServletBack extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<html><body><h1>OnlineStore - Gestion de la boutique</h1></body></html>");
         out.println("<a href=\"cataloguebck\">Accès au catalogue</a></br>");
-        out.println("<a href=\"add-work\">Ajouter une oeuvre au catalogue</a>");
+        out.println("<a href=\"add-work-form.html\">Ajouter une oeuvre au catalogue</a>");
 
         out.println("</body></html>");
 

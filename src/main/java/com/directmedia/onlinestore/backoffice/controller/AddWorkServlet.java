@@ -16,13 +16,12 @@ import java.io.PrintWriter;
 @WebServlet(name = "AddWorkServlet", value = "/add-work")
 public class AddWorkServlet extends HttpServlet {
     /**
-
-     * @param req  an {@link HttpServletRequest} object that
-     *             contains the request the client has made
-     *             of the servlet
+     * @param req      an {@link HttpServletRequest} object that
+     *                 contains the request the client has made
+     *                 of the servlet
      * @param response an {@link HttpServletResponse} object that
-     *             contains the response the servlet sends
-     *             to the client
+     *                 contains the response the servlet sends
+     *                 to the client
      * @throws IOException      if an input or output error is
      *                          detected when the servlet handles
      *                          the GET request
@@ -32,24 +31,23 @@ public class AddWorkServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
 
-        String titre = req.getParameter("Titre");
-        String anneeSortie = req.getParameter("Annee de sortie");
-        String genre=req.getParameter("Genre");
-        String resume=req.getParameter("Resume");
-        String mainArtist=req.getParameter("Artiste principal");
+        try {
+            Work newWork = new Work(req.getParameter("title"));
+            //newWork.setRelease(Integer.parseInt(req.getParameter("release")));
+            newWork.setGenre(req.getParameter("genre"));
+            newWork.setSummary(req.getParameter("summary"));
+            newWork.setMainArtist(new Artist(req.getParameter("artist")));
+            Catalogue.listOfWorks.add(newWork);
 
+            PrintWriter out = response.getWriter();
+            response.setContentType("text/html");
+            out.println("<html><body>Le film a ete ajoute -<a href=\"home\"> Retourner a la page d'accueil</a></body></html>");
 
-        Work work=new Work(titre);
-        Artist artist=new Artist(mainArtist);
-        work.setTitle(titre);
-        //work.setRelease.(anneeSortie);
-        work.setGenre(genre);
-        work.setSummary(resume);
-        Catalogue.listOfWorks.add(work);
-
-        out.println("<html><body><h1>OnlineStore - test</h1></body></html>");
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 }
+//Annee de sortie : <input type="text" name="release"/><br/><br/>
+//
