@@ -14,7 +14,11 @@ public class HomeServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<html><body><h1>OnlineStore - Gestion de la boutique</h1></body></html>");
-        out.println("<a href=\"catalogue\">Accès au catalogue</a>");
+        out.println("<a href=\"cataloguebck\">Accès au catalogue</a></br>");
+        out.println("<a href=\"add-work\">Ajouter une oeuvre au catalogue</a>");
+
         out.println("</body></html>");
+
+
     }
 }
