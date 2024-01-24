@@ -32,22 +32,16 @@ public class AddWorkServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 
-        try {
-            Work newWork = new Work(req.getParameter("title"));
-            //newWork.setRelease(Integer.parseInt(req.getParameter("release")));
-            newWork.setGenre(req.getParameter("genre"));
-            newWork.setSummary(req.getParameter("summary"));
-            newWork.setMainArtist(new Artist(req.getParameter("artist")));
-            Catalogue.listOfWorks.add(newWork);
+        PrintWriter out = response.getWriter();
+        response.setContentType("text/html;charset=UTF-8");
+        Work newWork = new Work(req.getParameter("title"));
+        newWork.setRelease(Integer.parseInt(req.getParameter("release")));
+        newWork.setGenre(req.getParameter("genre"));
+        newWork.setSummary(req.getParameter("summary"));
+        newWork.setMainArtist(new Artist(req.getParameter("artist")));
+        Catalogue.listOfWorks.add(newWork);
 
-            PrintWriter out = response.getWriter();
-            response.setContentType("text/html");
-            out.println("<html><body>Le film a ete ajoute -<a href=\"home\"> Retourner a la page d'accueil</a></body></html>");
+        out.println("<html><body>Le film a ete ajoute -<a href=\"homeBack\"> Retourner a la page d'accueil</a></body></html>");
 
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
     }
 }
-//Annee de sortie : <input type="text" name="release"/><br/><br/>
-//

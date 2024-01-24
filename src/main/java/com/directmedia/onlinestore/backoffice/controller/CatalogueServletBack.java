@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "CatalogueServlet", value = "/cataloguebck")
+@WebServlet(name = "CatalogueServletBack", value = "/catalogueBack")
 public class CatalogueServletBack extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
         if (Catalogue.listOfWorks.isEmpty()) {
@@ -43,7 +43,7 @@ public class CatalogueServletBack extends HttpServlet {
             Catalogue.listOfWorks.add(leGendarmeDeSaintTropez);
         }
 
-        out.println("<html><body><h1>Oeuvres au catalogue</h1><BR/><BR/>");
+        out.println("<html><body><h1>Oeuvres au catalogue</h1>");
         for (Work item : Catalogue.listOfWorks) {
             out.println(item.getTitle() + " (" + item.getRelease() + ")<BR/>");
         }
