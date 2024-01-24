@@ -69,9 +69,24 @@ public class AuthentificationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
-        String login=req.getParameter("login");
-        String password=req.getParameter("password");
-        PrintWriter out=resp.getWriter();
-        out.println("<html><body>Authentifie avec les identifiants : "+login+"/"+password+"</body></html>");
+
+        String login = req.getParameter("login");
+        String password = req.getParameter("password");
+
+        String idMichel = "michel";
+        String passMichel = "123456";
+        String idCaroline = "caroline";
+        String passCaroline = "abcdef";
+        PrintWriter out = resp.getWriter();
+
+        if ((login.equals(idMichel)) || (login.equals(idCaroline)) && ((password.equals(passMichel)) || (password.equals(passCaroline)))) {
+            out.println("<html><body>Authentifie avec les identifiants : " + login + "/" + password);
+            out.println("<a href=\"homeBack\"> Bienvenue</a>");
+            out.println("</body></html>");
+        } else {
+
+            out.println("<html><body>login/mdp errone</body></html></br>");
+            out.println("<html><body><a href=\"login.html\"> Essaie encore </a></body></html>");
+        }
     }
 }
