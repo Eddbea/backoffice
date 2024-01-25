@@ -20,7 +20,5 @@ public class HomeServletBack extends HttpServlet {
         out.println("<a href=\"catalogueBack\">Accès au catalogue</a></br>");
         out.println("<a href=\"add-work-form.html\">Ajouter une oeuvre au catalogue</a>");
         out.println("</body></html>");
-
-
     }
 }
