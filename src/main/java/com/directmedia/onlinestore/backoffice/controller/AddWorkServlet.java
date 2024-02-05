@@ -28,6 +28,6 @@ public class AddWorkServlet extends HttpServlet {
         newWork.setSummary(req.getParameter("summary"));
         newWork.setMainArtist(new Artist(req.getParameter("artist")));
         Catalogue.listOfWorks.add(newWork);
-        out.println("<html><body>Le film a ete ajoute -<a href=\"homeBack\"> Retourner a la page d'accueil</a></body></html>");
+        out.println("<html><body>Le film a ete ajoute -<a href=\"home\"> Retourner a la page d'accueil</a></body></html>");
     }
 }
