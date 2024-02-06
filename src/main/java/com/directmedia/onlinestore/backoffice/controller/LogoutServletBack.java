@@ -82,8 +82,8 @@ public class LogoutServletBack extends HttpServlet {
         HttpSession session=req.getSession();
         session.invalidate();
         PrintWriter out = resp.getWriter();
-        out.print("<html><body>Vous avez ete deconnecte, cliquez<a href=\"login.html\"> ici</body></html>");
-        out.print("<html><body> pour vous reconnecter</body></html>");
+        out.print("<html><body>Vous avez ete deconnecte, cliquez<a href=\"login.html\"> ici </a>pour vous reconnecter</body></html>");
+        //out.print("<html><body> pour vous reconnecter</body></html>");
 
 
 
