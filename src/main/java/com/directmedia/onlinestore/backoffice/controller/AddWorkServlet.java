@@ -25,21 +25,29 @@ public class AddWorkServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         Work newWork = new Work(req.getParameter("title"));
         //newWork.setTitle("title"); constructeur title
-        newWork.setRelease(Integer.parseInt(req.getParameter("release")));
+
         newWork.setGenre(req.getParameter("genre"));
         newWork.setSummary(req.getParameter("summary"));
         newWork.setMainArtist(new Artist(req.getParameter("artist")));
         String releaseA = String.valueOf(newWork.getRelease());
 
         try {
+            newWork.setRelease(Integer.parseInt(req.getParameter("release")));
             releaseA.matches("^\\d{4}$");
+
+
+
+
+
+
+
 
         } catch (NumberFormatException e) {
             RequestDispatcher disp = req.getRequestDispatcher("/work-added-failure");
             disp.forward(req, resp);
         }
 
-        if ((!Catalogue.listOfWorks.contains(newWork.getTitle()) && (!Catalogue.listOfWorks.contains(newWork.getMainArtist())))) {
+        if ((!Catalogue.listOfWorks.contains(newWork.getTitle())&&(!Catalogue.listOfWorks.contains(releaseA)) && (!Catalogue.listOfWorks.contains(newWork.getMainArtist())))) {
             RequestDispatcher disp = req.getRequestDispatcher("/work-added-success");
             disp.forward(req, resp);
             Catalogue.listOfWorks.add(newWork);
