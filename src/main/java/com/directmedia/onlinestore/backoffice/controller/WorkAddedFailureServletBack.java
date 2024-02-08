@@ -14,32 +14,20 @@ import java.io.PrintWriter;
 public class WorkAddedFailureServletBack extends HttpServlet {
 
 
-    protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        resp.setContentType("text/html;charset=UTF-8");
-        try(PrintWriter out=resp.getWriter()) {
-            out.println("<!doctype html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Added Failure Servlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Une erreur est survenue, l'oeuvre n'a pas ete ajoutee</h1>");
-            out.println("<a href=\"catalogueBack\">Retournez au catalogue</a><br/>");
-            out.println("<a href=\"homeBack\">Retournez a l'accueil</a>");
-            out.println("</body>");
-            out.println("</html>");
-
-        }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req,resp);
-    }
-
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req,resp);
+        PrintWriter out = resp.getWriter();
+        resp.setContentType("text/html;charset=utf-8");
+        out.println("<!doctype html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Sucess Added Servlet</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>Une erreur est survenue, l'oeuvre n'a pas ete ajoutee<h1>");
+        out.println("<a href=\"catalogueBack\">Retournez au catalogue</a><br/>");
+        out.println("<a href=\"homeBack\">Retournez a l'accueil</a>");
+        out.println("</body>");
+        out.println("</html>");
     }
 }
