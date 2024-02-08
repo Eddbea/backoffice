@@ -21,10 +21,10 @@ public class WorkAddedSuccessServletBack extends HttpServlet {
         out.println("<!doctype html>");
         out.println("<html>");
         out.println("<head>");
-        out.println("<title>Sucess Added Servlet</title>");
+        out.println("<title>Success Added Servlet</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>L'oeuvre a bien ete ajoutee<h1>");
+        out.println("<h1>L'oeuvre a bien ete ajoutee, son identifiant est le "+req.getAttribute("identifiantWork")+"<h1>");
         out.println("<a href=\"catalogueBack\">Retournez au catalogue</a><br/>");
         out.println("<a href=\"homeBack\">Retournez a l'accueil</a>");
         out.println("</body>");

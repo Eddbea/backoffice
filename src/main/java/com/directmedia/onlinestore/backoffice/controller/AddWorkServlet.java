@@ -50,8 +50,10 @@ public class AddWorkServlet extends HttpServlet {
         RequestDispatcher dispatcher=null;
             if(success){
                 Catalogue.listOfWorks.add(newWork);
+                req.setAttribute("identifiantWork",newWork.getId());
                 dispatcher = req.getRequestDispatcher("/work-added-success");
                 dispatcher.forward(req, resp);
+
             }
             else {
                 dispatcher = req.getRequestDispatcher("/work-added-failure");
