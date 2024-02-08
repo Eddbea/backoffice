@@ -24,40 +24,38 @@ public class AddWorkServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         resp.setContentType("text/html;charset=UTF-8");
         Work newWork = new Work(req.getParameter("title"));
-        //newWork.setTitle("title"); constructeur title
-
+        String releaseA = String.valueOf(newWork.getRelease());
         newWork.setGenre(req.getParameter("genre"));
         newWork.setSummary(req.getParameter("summary"));
         newWork.setMainArtist(new Artist(req.getParameter("artist")));
-        String releaseA = String.valueOf(newWork.getRelease());
 
         try {
             newWork.setRelease(Integer.parseInt(req.getParameter("release")));
-            releaseA.matches("^\\d{4}$");
 
+            for (Work item : Catalogue.listOfWorks) {
+                boolean isTitle = item.getTitle().contains(newWork.getTitle());
+                boolean isArtist = item.getMainArtist().equals(newWork.getMainArtist());
+                boolean releaseSaisie = releaseA.matches("^\\d{4}$");
+                String releaseControl = Integer.toString(item.getRelease());
+                boolean isRelease = releaseControl.contains(releaseA);
 
-
-
-
-
-
-
+                if ((!isTitle) && (!isRelease) && (!isArtist) && (releaseSaisie)) {
+                    RequestDispatcher disp = req.getRequestDispatcher("/work-added-success");
+                    disp.forward(req, resp);
+                    Catalogue.listOfWorks.add(newWork);
+                    out.println("<html><body>Le film a ete ajoute -<a href=\"home\"> Retourner a la page d'accueil</a></body></html>");
+                } else {
+                    RequestDispatcher dispatcher = req.getRequestDispatcher("/work-added-failure");
+                    dispatcher.forward(req, resp);
+                }
+            }
         } catch (NumberFormatException e) {
-            RequestDispatcher disp = req.getRequestDispatcher("/work-added-failure");
-            disp.forward(req, resp);
-        }
+            RequestDispatcher dispt = req.getRequestDispatcher("/work-added-failure");
+            dispt.forward(req, resp);
 
-        if ((!Catalogue.listOfWorks.contains(newWork.getTitle())&&(!Catalogue.listOfWorks.contains(releaseA)) && (!Catalogue.listOfWorks.contains(newWork.getMainArtist())))) {
-            RequestDispatcher disp = req.getRequestDispatcher("/work-added-success");
-            disp.forward(req, resp);
-            Catalogue.listOfWorks.add(newWork);
-            out.println("<html><body>Le film a ete ajoute -<a href=\"home\"> Retourner a la page d'accueil</a></body></html>");
-        }
-        else {
-            RequestDispatcher disp = req.getRequestDispatcher("/work-added-failure");
-            disp.forward(req, resp);
-        }
 
+        }
     }
 }
+
 
