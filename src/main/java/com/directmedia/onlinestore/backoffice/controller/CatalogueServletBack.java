@@ -48,6 +48,7 @@ public class CatalogueServletBack extends HttpServlet {
             out.println(item.getTitle() + " (" + item.getRelease() + ")<BR/>");
         }
 
+        out.println("<a href=\"homeBack\">Retournez a l'accueil</a>");
         out.println("</body");
         out.println("</html>");
     }

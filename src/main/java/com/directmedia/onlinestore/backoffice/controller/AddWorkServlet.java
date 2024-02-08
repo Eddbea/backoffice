@@ -24,32 +24,32 @@ public class AddWorkServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         resp.setContentType("text/html;charset=UTF-8");
         Work newWork = new Work(req.getParameter("title"));
+        //newWork.setTitle("title"); constructeur title
         newWork.setRelease(Integer.parseInt(req.getParameter("release")));
         newWork.setGenre(req.getParameter("genre"));
         newWork.setSummary(req.getParameter("summary"));
         newWork.setMainArtist(new Artist(req.getParameter("artist")));
+        String releaseA = String.valueOf(newWork.getRelease());
 
-        String convertRelease=String.valueOf(newWork.getRelease());
-        String[] entier=convertRelease.split("");
-        String titleControl=newWork.getTitle();
-        String mainArtistControl= String.valueOf(newWork.getMainArtist());
+        try {
+            releaseA.matches("^\\d{4}$");
 
-        Work workTest=new Work();
-        workTest.setRelease(Integer.parseInt(convertRelease));
-        workTest.setTitle(titleControl);
-        workTest.setMainArtist(newWork.getMainArtist());
+        } catch (NumberFormatException e) {
+            RequestDispatcher disp = req.getRequestDispatcher("/work-added-failure");
+            disp.forward(req, resp);
+        }
 
+        if ((!Catalogue.listOfWorks.contains(newWork.getTitle()) && (!Catalogue.listOfWorks.contains(newWork.getMainArtist())))) {
+            RequestDispatcher disp = req.getRequestDispatcher("/work-added-success");
+            disp.forward(req, resp);
+            Catalogue.listOfWorks.add(newWork);
+            out.println("<html><body>Le film a ete ajoute -<a href=\"home\"> Retourner a la page d'accueil</a></body></html>");
+        }
+        else {
+            RequestDispatcher disp = req.getRequestDispatcher("/work-added-failure");
+            disp.forward(req, resp);
+        }
 
-           if((entier.length==4)&&(!Catalogue.listOfWorks.contains(titleControl))&&(!Catalogue.listOfWorks.contains(mainArtistControl))){
-               RequestDispatcher disp=req.getRequestDispatcher("/work-added-success");
-               disp.forward(req,resp);
-           }
-           else {
-               RequestDispatcher disp=req.getRequestDispatcher("/work-added-failure");
-               disp.forward(req,resp);
-           }
-
-        Catalogue.listOfWorks.add(newWork);
-        out.println("<html><body>Le film a ete ajoute -<a href=\"home\"> Retourner a la page d'accueil</a></body></html>");
     }
 }
+
