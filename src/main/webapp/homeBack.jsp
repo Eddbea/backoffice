@@ -12,9 +12,11 @@
 </head>
 <body>
 <h1>OnlineStore - Gestion de la boutique</h1>
-<%HttpSession session1=request.getSession();%>
-
-    Bonjour <%request.getSession().getAttribute("login");%>
+<%String login=(String)session.getAttribute("login");
+if(login!=null){
+%>
+Bonjour <%=login%>
+<%}%>
 <a href="logout"> (Deconnexion)</a><br/>
 <a href="login.html">Authentification</a></br>
 <a href="catalogueBack">Accès au catalogue</a></br>
