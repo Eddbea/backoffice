@@ -36,7 +36,7 @@ public class AuthentificationServlet extends HttpServlet {
 
         if ((login.equals(michelLogin)) && (password.equals(michelPass)) || (login.equals(carolineLogin)) && (password.equals(carolinePass)) || (login.equals(eddLogin)) && (password.equals(eddPass))) {
             out.println("<html><body>Authentifie avec les identifiants : " + login + "/" + password);
-            out.println("<a href=\"homeBack\"> Bienvenue</a>");
+            out.println("<a href=\"homeBack.jsp\"> Bienvenue</a>");
             out.println("</body></html>");
             HttpSession session=req.getSession();
             session.setAttribute("login", login);

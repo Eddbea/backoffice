@@ -54,7 +54,7 @@ public class CatalogueServletBack extends HttpServlet {
             out.println(item.getTitle() + " (" + item.getRelease() + ") ("+item.getMainArtist().getName()+ ")<BR/>");
         }
         out.println("<a href=\"add-work-form.html\">Ajouter une oeuvre au catalogue</a><br/>");
-        out.println("<a href=\"homeBack\">Retournez a l'accueil</a>");
+        out.println("<a href=\"homeBack.jsp\">Retournez a l'accueil</a>");
         out.println("</body");
         out.println("</html>");
     }
