@@ -44,7 +44,7 @@ public class AuthentificationServlet extends HttpServlet {
 
         } else {
             out.println("<html><body>login/mdp ERRONE</body></html></br>");
-            out.println("<html><body><a href=\"login.html\">   Essaie encore </a></body></html>");
+            out.println("<html><body><a href=\"login.html\"> Essaie encore </a></body></html>");
         }
     }
 }

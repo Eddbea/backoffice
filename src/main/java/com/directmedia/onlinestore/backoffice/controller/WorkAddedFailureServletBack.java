@@ -25,7 +25,7 @@ public class WorkAddedFailureServletBack extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println("<h1>Une erreur est survenue, l'oeuvre n'a pas ete ajoutee<h1>");
-        out.println("<a href=\"catalogueBack\">Retournez au catalogue</a><br/>");
+        out.println("<a href=\"catalogueBackJsp.jsp\">Retournez au catalogue</a><br/>");
         out.println("<a href=\"homeBack.jsp\">Retournez a l'accueil</a>");
         out.println("</body>");
         out.println("</html>");
