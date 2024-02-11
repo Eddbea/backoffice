@@ -15,7 +15,7 @@
 <%String login=(String)session.getAttribute("login");
 if(login!=null){
 %>
-Bonjour <%=login%>
+Bonjour ${login}
 <%}%>
 <a href="logout"> (Deconnexion)</a><br/>
 <a href="login.html">Authentification</a></br>
