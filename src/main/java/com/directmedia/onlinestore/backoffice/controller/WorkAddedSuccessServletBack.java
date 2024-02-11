@@ -15,7 +15,7 @@ public class WorkAddedSuccessServletBack extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
         resp.setContentType("text/html;charset=utf-8");
         out.println("<!doctype html>");
@@ -24,7 +24,7 @@ public class WorkAddedSuccessServletBack extends HttpServlet {
         out.println("<title>Success Added Servlet</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>L'oeuvre a bien ete ajoutee, son identifiant est le "+req.getAttribute("identifiantWork")+"<h1>");
+        out.println("<h1>L'oeuvre a bien ete ajoutee, son identifiant est le "+request.getAttribute("identifiantWork")+"<h1>");
         out.println("<a href=\"catalogueBackJsp.jsp\">Retournez au catalogue</a><br/>");
         out.println("<a href=\"homeJsp.jsp\">Retournez a l'accueil</a>");
         out.println("</body>");

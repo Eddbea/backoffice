@@ -16,11 +16,11 @@ public class LogoutServletBack extends HttpServlet {
 
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 
 
     resp.setContentType("text/html;charset=UTF-8");
-        HttpSession session=req.getSession();
+        HttpSession session=request.getSession();
         session.invalidate();
         PrintWriter out = resp.getWriter();
         out.print("<html><body>Vous avez ete deconnecte, cliquez<a href=\"login.html\"> ici </a>pour vous reconnecter</body></html>");

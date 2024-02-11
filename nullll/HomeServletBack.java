@@ -13,11 +13,11 @@ import java.io.PrintWriter;
 public class HomeServletBack extends HttpServlet {
 
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse response) throws IOException, ServletException {
-        //HttpSession session=req.getSession();
-        //response.setContentType("text/html;charset=UTF-8");
-       // PrintWriter out = response.getWriter();
-       // out.println("<html><body>Bonjour "+req.getSession().getAttribute("login")+"<a href=\"logout\"> " +
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        HttpSession session=request.getSession();
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>Bonjour "+request.getSession().getAttribute("login")+"<a href=\"logout\"> " +
                 //"(Deconnexion)</a></body></html>");
         out.println("<html><body><h1>OnlineStore - Gestion de la boutique</h1></body></html>");
         out.println("<a href=\"login.html\">Authentification</a></br>");

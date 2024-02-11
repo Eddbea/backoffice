@@ -20,16 +20,16 @@ import java.util.Optional;
 public class AddWorkServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 
         boolean success = true;
-        Work newWork = new Work(req.getParameter("title"));
-        newWork.setGenre(req.getParameter("genre"));
-        newWork.setSummary(req.getParameter("summary"));
-        newWork.setMainArtist(new Artist(req.getParameter("artist")));
+        Work newWork = new Work(request.getParameter("title"));
+        newWork.setGenre(request.getParameter("genre"));
+        newWork.setSummary(request.getParameter("summary"));
+        newWork.setMainArtist(new Artist(request.getParameter("artist")));
 
         try {
-            newWork.setRelease(Integer.parseInt(req.getParameter("release")));
+            newWork.setRelease(Integer.parseInt(request.getParameter("release")));
         }
         catch (NumberFormatException e) {
             success = false;
@@ -50,14 +50,14 @@ public class AddWorkServlet extends HttpServlet {
         RequestDispatcher dispatcher=null;
             if(success){
                 Catalogue.listOfWorks.add(newWork);
-                req.setAttribute("identifiantWork",newWork.getId());
-                dispatcher = req.getRequestDispatcher("/work-added-success");
-                dispatcher.forward(req, resp);
+                request.setAttribute("identifiantWork",newWork.getId());
+                dispatcher = request.getRequestDispatcher("/work-added-success");
+                dispatcher.forward(request, resp);
 
             }
             else {
-                dispatcher = req.getRequestDispatcher("/work-added-failure");
-                dispatcher.forward(req, resp);
+                dispatcher = request.getRequestDispatcher("/work-added-failure");
+                dispatcher.forward(request, resp);
             }
     }
 }

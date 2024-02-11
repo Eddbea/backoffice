@@ -19,11 +19,11 @@ public class AuthentificationServlet extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
 
@@ -38,7 +38,7 @@ public class AuthentificationServlet extends HttpServlet {
             out.println("<html><body>Authentifie avec les identifiants : " + login + "/" + password);
             out.println("<a href=\"homeBack.jsp\"> Bienvenue</a>");
             out.println("</body></html>");
-            HttpSession session=req.getSession();
+            HttpSession session=request.getSession();
             session.setAttribute("login", login);
 
 
