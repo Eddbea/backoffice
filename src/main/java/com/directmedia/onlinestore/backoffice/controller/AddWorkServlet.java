@@ -35,13 +35,6 @@ public class AddWorkServlet extends HttpServlet {
             success = false;
         }
 
-
-        /*for (Work item : Catalogue.listOfWorks) {
-            if (item.getTitle().equals(newWork.getTitle()) && (item.getRelease() == newWork.getRelease()) && (item.getMainArtist().getName().equals(newWork.getMainArtist().getName()))) {
-                success = false;}}
-         */
-
-
         Optional<Work> optionalWork=Catalogue.listOfWorks.stream().filter(work -> work.getTitle().equals(newWork.getTitle()) && (work.getRelease() == newWork.getRelease()) && (work.getMainArtist().getName().equals(newWork.getMainArtist().getName()))).findAny();
             if(optionalWork.isPresent()){
                 success=false;
