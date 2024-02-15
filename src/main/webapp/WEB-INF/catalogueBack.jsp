@@ -23,7 +23,7 @@
     (${Liste.release})<br>
 </c:forEach>
 <br/>
-<a href="add-work-form.html">Ajouter une oeuvre au catalogue</a><br/>
-<a href="homeBack.jsp">Retournez a l'accueil</a>
+<a href="../add-work-form.html">Ajouter une oeuvre au catalogue</a><br/>
+<a href="../homeBack.jsp">Retournez a l'accueil</a>
 </body>
 </html>

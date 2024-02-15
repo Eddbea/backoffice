@@ -50,7 +50,7 @@ public class CatalogueServletBack extends HttpServlet {
             Catalogue.listOfWorks.add(leGendarmeDeSaintTropez);
         }
         request.setAttribute("Liste", Catalogue.listOfWorks);
-        RequestDispatcher disp = request.getRequestDispatcher("/catalogueBack.jsp");
+        RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/catalogueBack.jsp");
         disp.forward(request, response);
     }
 }
