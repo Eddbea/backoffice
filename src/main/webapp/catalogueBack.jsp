@@ -20,7 +20,7 @@
 <c:forEach items="${Catalogue.listOfWorks}" var="Liste">
     ${Liste.title}
     ${Liste.mainArtist.name}
-    ${Liste.release}<br>
+    (${Liste.release})<br>
 </c:forEach>
 <br/>
 <a href="add-work-form.html">Ajouter une oeuvre au catalogue</a><br/>
