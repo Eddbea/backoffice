@@ -20,8 +20,7 @@
 
 </c:if>
         <a href="login.html"> Authentification</a></br>
-        <a href="catalogueBackJsp.jsp"> Accès au catalogue</a></br>
+        <a href="catalogueBack"> Accès au catalogue</a></br>
         <a href="add-work-form.html"> Ajouter une oeuvre au catalogue</a>
-
 </body>
 </html>

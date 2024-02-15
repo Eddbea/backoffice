@@ -4,6 +4,8 @@ import com.directmedia.onlinestore.core.entity.Artist;
 import com.directmedia.onlinestore.core.entity.Catalogue;
 import com.directmedia.onlinestore.core.entity.Work;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +17,8 @@ import java.io.PrintWriter;
 public class CatalogueServletBack extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
 
         if (Catalogue.listOfWorks.isEmpty()) {
             Artist tomCruise = new Artist("Tom Cruise");
@@ -48,15 +49,8 @@ public class CatalogueServletBack extends HttpServlet {
             Catalogue.listOfWorks.add(bad);
             Catalogue.listOfWorks.add(leGendarmeDeSaintTropez);
         }
-
-        out.println("<html><body><h1>Oeuvres au catalogue</h1>");
-        for (Work item : Catalogue.listOfWorks) {
-            out.println(item.getTitle() + " (" + item.getRelease() + ") ("+item.getMainArtist().getName()+ ")<BR/>");
-        }
-        out.println("<a href=\"add-work-form.html\">Ajouter une oeuvre au catalogue</a><br/>");
-        out.println("<a href=\"homeBack.jsp\">Retournez a l'accueil</a>");
-        out.println("</body");
-        out.println("</html>");
+        request.setAttribute("Liste", Catalogue.listOfWorks);
+        RequestDispatcher disp = request.getRequestDispatcher("/catalogueBack.jsp");
+        disp.forward(request, response);
     }
 }
-
