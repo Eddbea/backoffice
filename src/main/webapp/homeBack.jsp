@@ -7,9 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!doctype html>
 
 <html>
 <head>
+    <meta content="text/html; charset=utf-8" />
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/application.js"></script>
     <title>Accueil du Back Office</title>
 </head>
 <body>
@@ -17,10 +21,10 @@
 
     <c:if test="${not empty login}">
     Bonjour ${login} <a href="logout"> (Deconnexion)</a><br/>
-
 </c:if>
-        <a href="login.html"> Authentification</a></br>
-        <a href="catalogueBack"> Accès au catalogue</a></br>
-        <a href="add-work-form.html"> Ajouter une oeuvre au catalogue</a>
+        <a href="add-work-form.html"> Ajouter une oeuvre au catalogue</a><br/>
+        <a href="login.html"> Authentification</a><br/>
+        <a href="catalogueBack"> Affichez le catalogue</a><br>
+
 </body>
 </html>
