@@ -13,7 +13,7 @@
 <head>
     <meta content="text/html; charset=utf-8" />
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/application.js"></script>
+    <script src="js/application-3.js"></script>
     <title>Accueil du Back Office</title>
 </head>
 <body>

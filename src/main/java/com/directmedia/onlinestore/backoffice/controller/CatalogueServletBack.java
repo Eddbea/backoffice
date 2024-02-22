@@ -3,6 +3,7 @@ package com.directmedia.onlinestore.backoffice.controller;
 import com.directmedia.onlinestore.core.entity.Artist;
 import com.directmedia.onlinestore.core.entity.Catalogue;
 import com.directmedia.onlinestore.core.entity.Work;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -48,9 +49,12 @@ public class CatalogueServletBack extends HttpServlet {
             Catalogue.listOfWorks.add(minorityReport);
             Catalogue.listOfWorks.add(bad);
             Catalogue.listOfWorks.add(leGendarmeDeSaintTropez);
+
+            response.setContentType("application/json");
+            PrintWriter out=response.getWriter();
+            ObjectMapper objectMapper=new ObjectMapper();
+            objectMapper.writeValue(out,Catalogue.listOfWorks);
+
         }
-        request.setAttribute("Liste", Catalogue.listOfWorks);
-        RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/catalogueBack.jsp");
-        disp.forward(request, response);
     }
 }
